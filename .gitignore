@@ -6,6 +6,7 @@
 /dist
 
 # Custom
+/src/common/constants/environment.js
 
 # Dependency directories
 node_modules
@@ -13,3 +14,4 @@ jspm_packages
 
 # Optional npm cache directory
 .npm
+/npm-debug.log

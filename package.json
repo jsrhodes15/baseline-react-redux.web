@@ -3,9 +3,12 @@
   "version": "1.0.0",
   "description": "Tour module for the band Chicago",
   "main": "app.js",
+  "repository": {
+    "type": "git",
+    "url": "https://johnrhampton@bitbucket.org/craftysquad/chicago-tour.module.git"
+  },
   "scripts": {
-    "test": "node test",
-    "start": "node start"
+    "start": "node ./config/scripts/start.js"
   },
   "author": "Crafty",
   "license": "ISC",
@@ -18,7 +21,10 @@
     "react": "^15.0.1",
     "react-dom": "^15.0.1",
     "react-redux": "^4.4.4",
-    "redux": "^3.4.0"
+    "react-router": "^2.1.1",
+    "redux": "^3.4.0",
+    "redux-logger": "^2.6.1",
+    "redux-thunk": "^2.0.1"
   },
   "devDependencies": {
     "babel-core": "^6.7.6",

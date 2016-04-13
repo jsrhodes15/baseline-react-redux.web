@@ -1,7 +1,9 @@
 #!/usr/bin/env bash
 
 ##
+#
 # Refer to README for prerequisites prior to running start script
+#
 ##
 
 # Add a reference to nvm
