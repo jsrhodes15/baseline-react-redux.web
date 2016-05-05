@@ -4,7 +4,7 @@ import 'babel-polyfill';
 import React from 'react';
 import {render} from 'react-dom';
 import {Provider} from 'react-redux';
-import Tour from './containers/Tour';
+import StartScreen from './containers/StartScreen';
 import * as main_store from './common/stores/main.store';
 
 const store = main_store.createStores();
@@ -18,9 +18,14 @@ require('../node_modules/material-design-lite/dist/material.blue_grey-blue.min.c
 // Stylesheets
 require('./assets/styles/main.scss');
 
-render(
-  <Provider store={store}>
-    <Tour store={store}/>
-  </Provider>,
-  document.getElementById('app')
-);
+// Images and icons
+require.context('./assets/images', true, /.*/);
+
+if (document.getElementById('app')) {
+  render(
+    <Provider store={store}>
+      <StartScreen store={store}/>
+    </Provider>,
+    document.getElementById('app')
+  );
+}
