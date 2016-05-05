@@ -1,10 +1,10 @@
 'use strict';
 
-import { combineReducers } from 'redux';
-import { tour } from './tour.reducer';
+import {combineReducers} from 'redux';
+import {user_reducer} from './user.reducer';
 
 const rootReducer = combineReducers({
-  tour
+  user_reducer
 });
 
 export default rootReducer;
