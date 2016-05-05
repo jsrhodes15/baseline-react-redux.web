@@ -1,0 +1,32 @@
+
+@import '../../components/Login/Login';
+
+.hide {
+  visibility: hidden;
+}
+
+.snack-bar {
+  position: absolute !important;
+}
+
+.mdl-textfield--floating-label.is-dirty, .mdl-textfield--floating-label.is-focused {
+  .mdl-textfield__label {
+    color: rgb(68, 138, 255);
+  }
+
+  .mdl-textfield__label:after {
+    background-color: rgb(68, 138, 255);
+  }
+}
+
+.mdl-button--raised.mdl-button--colored {
+  background-color: rgb(68, 138, 255);
+}
+
+.mdl-textfield--floating-label.is-dirty .mdl-textfield__label {
+  font-size: 15px;
+}
+
+.mdl-textfield--floating-label.is-focused .mdl-textfield__label {
+  font-size: 15px;
+}
