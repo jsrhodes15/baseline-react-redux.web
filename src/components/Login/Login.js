@@ -1,6 +1,6 @@
 'use strict';
 
-import React, {Component, PropTypes} from 'react';
+import React, {PropTypes} from 'react';
 import {ENVIRONMENT} from '../../common/constants/environment';
 import Loading from './Loading/Loading';
 

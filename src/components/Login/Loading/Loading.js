@@ -1,10 +1,10 @@
 'use strict';
 
-import React from 'react';
+import React, {PropTypes} from 'react';
 import classNames from 'classnames';
 
 const Loading = ({loading}) => {
-  
+
   var loadingClass = classNames('dissolve-animation', {
     'hide': !loading
   });
@@ -16,6 +16,10 @@ const Loading = ({loading}) => {
       </div>
     </div>
   );
+};
+
+Loading.propTypes = {
+  loading: PropTypes.bool
 };
 
 export default Loading;
