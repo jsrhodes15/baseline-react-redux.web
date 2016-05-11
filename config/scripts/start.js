@@ -12,6 +12,6 @@
   console.log('## Building environment.js for ' + currentEnvironment.toUpperCase() + ' ##');
   
   fs.writeFileSync(path.join('./src/common/constants/', 'environment.js'),
-    '\ module.exports = ' + JSON.stringify(config) + '\;\
+    '\ export const ENVIRONMENT = ' + JSON.stringify(config) + '\;\
     ');
 }());
