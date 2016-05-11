@@ -1,25 +1,21 @@
 'use strict';
 
 import React, {Component, PropTypes} from 'react';
-import environment from '../../common/constants/environment';
+import {ENVIRONMENT} from '../../common/constants/environment';
 import Loading from './Loading/Loading';
 
-export default class Login extends Component {
-  constructor(props) {
-    super(props);
-  }
-
-  render() {
-    const {email, password, loading, handleFieldChange, handleLogin} = this.props;
-
-    var login =
+const Login = ({loading, email, password, handleFieldChange, handleLogin}) => (
+  <div>
+    <div className="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+      <div id="login-container" className="android-content mdl-layout__content md">
+        <div className="mdl-typography--text-center">
           <div className="mdl-layout__content login">
             <Loading loading={loading}/>
 
             <div className="login-header">
               <h5>Welcome</h5>
             </div>
-            
+
             <div className="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
               <input className="mdl-textfield__input"
                      type="text"
@@ -47,25 +43,26 @@ export default class Login extends Component {
 
             <div className="mdl-gid"></div>
             <div style={{color: '#448aff'}}
-                 className="mdl-cell mdl-cell--2-col mdl-cell--10-offset">{environment.VERSION}</div>
+                 className="mdl-cell mdl-cell--2-col mdl-cell--10-offset">{ENVIRONMENT.VERSION}</div>
 
             <div id="login-snack-bar" className="snack-bar mdl-js-snackbar mdl-snackbar">
               <div className="mdl-snackbar__text"></div>
               <button className="mdl-snackbar__action" type="button"></button>
             </div>
 
-          </div>;
-
-    return (
-      <div>
-        <div className="mdl-layout mdl-js-layout mdl-layout--fixed-header">
-          <div id="login-container" className="android-content mdl-layout__content md">
-            <div className="mdl-typography--text-center">
-              {login}
-            </div>
           </div>
         </div>
       </div>
-    );
-  }
-}
+    </div>
+  </div>
+);
+
+Login.propTypes = {
+  loading: PropTypes.bool,
+  email: PropTypes.string,
+  password: PropTypes.string,
+  handleFieldChange: PropTypes.func.isRequired,
+  handleLogin: PropTypes.func.isRequired
+};
+
+export default Login;
