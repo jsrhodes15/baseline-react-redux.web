@@ -11,7 +11,7 @@ export NVM_DIR=~/.nvm
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
 
 # Baseline to Node LTS
-nvm install 4.4.3
+nvm install 4.4.4
 
 # Global prerequisites
 npm install -g npm3
