@@ -14,7 +14,8 @@ import React, {Component} from 'react';
 import {render} from 'react-dom';
 import {Router, Route, hashHistory} from 'react-router';
 
-import {REACT_BASELINE_PROFILE, loginComplete} from '../../common/actions/user.action';
+import {KEYS} from '../../common/constants/localStorage';
+import {loginComplete} from '../../common/actions/user.action';
 import StartScreen from '../StartScreen';
 
 export default class App extends Component {
@@ -29,9 +30,15 @@ export default class App extends Component {
   }
 
   componentWillMount() {
-    if (localStorage[REACT_BASELINE_PROFILE]) {
-      var profile = JSON.parse(localStorage[REACT_BASELINE_PROFILE]);
-      this.props.store.dispatch(loginComplete({profile: profile}));
+    if (localStorage[KEYS.USER_PROFILE]) {
+      let profile = JSON.parse(localStorage[KEYS.USER_PROFILE]);
+
+      if (profile.user && profile.user.status === 'authenticated') {
+        this.props.store.dispatch(loginComplete({profile: profile}));
+        // if (location.hash === '') {
+        //   this.props.store.dispatch(redirectFromLogin('/dashboard'));
+        // }
+      }
     }
   }
 
@@ -42,19 +49,10 @@ export default class App extends Component {
   _handleStoreChange() {
     var user_reducer = this.props.store.getState().user_reducer;
     if (user_reducer.profile && user_reducer.profile.user.status === 'authenticated') {
-      localStorage[REACT_BASELINE_PROFILE] = JSON.stringify(user_reducer.profile);
+      localStorage[KEYS.USER_PROFILE] = JSON.stringify(user_reducer.profile);
     } else {
-      delete localStorage[REACT_BASELINE_PROFILE];
+      delete localStorage[KEYS.USER_PROFILE];
     }
-
-    this._handleUserChange(user_reducer);
-  }
-
-  _handleUserChange(user_reducer) {
-    // switch (user_reducer.type) {
-    //   case LOGOUT_COMPLETE:
-    //     return browserHistory.replace('/');
-    // }
   }
 
   _verifyAuth(nextState, replace) {
