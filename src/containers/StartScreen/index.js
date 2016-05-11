@@ -3,7 +3,13 @@
 import React, {Component, PropTypes} from 'react';
 import {connect} from 'react-redux';
 
-import {login, updateLoginField} from '../../common/actions/user.action';
+import {
+  changeRoute
+} from '../../common/actions/navigation.action';
+
+import {
+  login, updateLoginField
+} from '../../common/actions/user.action';
 import {BG_IMAGES} from '../../common/constants/backgrounds';
 
 import Login from '../../components/Login/Login';
@@ -22,14 +28,14 @@ class StartScreen extends Component {
 
   componentWillReceiveProps(nextProps) {
     var user_reducer = nextProps.user_reducer;
-    // if (user_reducer.error) {
-    //   this._showSnackBar(user_reducer.error.message);
-    //   return;
-    // }
-    //
-    // if (user_reducer.profile && user_reducer.profile.user.status === 'authenticated') {
-    //   this.context.router.push('/dashboard')
-    // }
+    if (user_reducer.error) {
+      this._showSnackBar(user_reducer.error.message);
+      return;
+    }
+
+    if (user_reducer.profile && user_reducer.profile.user.status === 'authenticated') {
+      this.props.dispatch(changeRoute('/dashboard'));
+    }
   }
 
   _handleLogin() {
