@@ -3,13 +3,8 @@
 import React, {Component, PropTypes} from 'react';
 import {connect} from 'react-redux';
 
-import {
-  changeRoute
-} from '../../common/actions/navigation.action';
-
-import {
-  login, updateLoginField
-} from '../../common/actions/user.action';
+import {changeRoute} from '../../common/actions/navigation.action';
+import {login, updateLoginField} from '../../common/actions/user.action';
 import {BG_IMAGES} from '../../common/constants/backgrounds';
 
 import Login from '../../components/Login/Login';
@@ -33,7 +28,7 @@ class StartScreen extends Component {
       return;
     }
 
-    if (user_reducer.profile && user_reducer.profile.user.status === 'authenticated') {
+    if (user_reducer.profile && user_reducer.profile.status === 'authenticated') {
       this.props.dispatch(changeRoute('/dashboard'));
     }
   }
@@ -64,16 +59,15 @@ class StartScreen extends Component {
   }
 
   _showSnackBar(message) {
-    let data = {
+    var data = {
       message: message,
       timeout: 2500
     };
-    let snackbarContainer = document.querySelector('#login-snack-bar');
+    var snackbarContainer = document.querySelector('#login-snack-bar');
     snackbarContainer.MaterialSnackbar.showSnackbar(data);
   }
 
   render() {
-
     var {user_reducer} = this.props;
 
     return (
