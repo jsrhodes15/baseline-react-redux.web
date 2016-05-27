@@ -1,8 +1,24 @@
 'use strict';
 
+import * as UserService from '../services/UserService';
+
 export const LOGIN_REQUEST = 'LOGIN_REQUEST';
 export const LOGIN_COMPLETE = 'LOGIN_COMPLETE';
 export const UPDATE_LOGIN_FIELD = 'UPDATE_LOGIN_FIELD';
+
+export function login(email, password) {
+  return dispatch => {
+    dispatch(loginRequest());
+
+    return UserService.login(email, password)
+      .then(profile => {
+        dispatch(loginComplete({profile: profile}));
+      })
+      .catch(error => {
+        dispatch(loginComplete({error: error}));
+      });
+  }
+}
 
 export function loginComplete(payload) {
   return {
@@ -10,20 +26,6 @@ export function loginComplete(payload) {
     profile: payload.profile,
     error: payload.error
   };
-}
-
-export function login(email, password) {
-  return dispatch => {
-    dispatch(loginRequest());
-
-    // return UserService.login(username, password, phoneExt)
-    //   .then(profile => {
-    //     dispatch(loginComplete({profile: profile}));
-    //   })
-    //   .catch(error => {
-    //     dispatch(loginComplete({error: error}));
-    //   });
-  }
 }
 
 function loginRequest() {
