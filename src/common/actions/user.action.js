@@ -1,6 +1,6 @@
 'use strict';
 
-import * as UserService from '../services/UserService';
+import * as user from '../services/user';
 
 export const LOGIN_REQUEST = 'LOGIN_REQUEST';
 export const LOGIN_COMPLETE = 'LOGIN_COMPLETE';
@@ -10,7 +10,7 @@ export function login(email, password) {
   return dispatch => {
     dispatch(loginRequest());
 
-    return UserService.login(email, password)
+    return user.login(email, password)
       .then(profile => {
         dispatch(loginComplete({profile: profile}));
       })
@@ -28,12 +28,6 @@ export function loginComplete(payload) {
   };
 }
 
-function loginRequest() {
-  return {
-    type: LOGIN_REQUEST
-  };
-}
-
 export function updateLoginField(key, value) {
   return dispatch => {
     let dispatch_payload = {
@@ -44,4 +38,10 @@ export function updateLoginField(key, value) {
 
     dispatch(dispatch_payload);
   }
+}
+
+function loginRequest() {
+  return {
+    type: LOGIN_REQUEST
+  };
 }
