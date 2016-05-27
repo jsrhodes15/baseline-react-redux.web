@@ -37,7 +37,7 @@ function checkStatus(response) {
     return response;
   } else {
     return response.text()
-      .then((responseObj) => {
+      .then(responseObj => {
         var parsed = JSON.parse(responseObj);
         var error = new Error(parsed.message || response.statusText);
         error.response = response;
