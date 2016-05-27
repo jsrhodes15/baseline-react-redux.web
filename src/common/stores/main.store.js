@@ -5,6 +5,8 @@ import thunkMiddleware from 'redux-thunk';
 import createLogger from 'redux-logger';
 import rootReducer from '../reducers';
 
+import {ENVIRONMENT} from '../constants/environment';
+
 export let createStores = function(initialState) {
   const store = createStore(
     rootReducer,
@@ -12,7 +14,8 @@ export let createStores = function(initialState) {
     applyMiddleware(thunkMiddleware, createLogger())
   );
 
-  if (module.hot) {
+  // only run hot if not local
+  if (module.hot && ENVIRONMENT.ENV_TYPE !== 'local') {
     module.hot.accept('../reducers', () => {
       const nextRootReducer = require('../reducers').default;
       store.replaceReducer(nextRootReducer);
