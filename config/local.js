@@ -2,7 +2,7 @@ var pkg = require('../package.json');
 
 module.exports = {
   'ENV_TYPE': 'local',
-  'API_PATH': '',
+  'API_PATH': 'http://localhost:1337',
   'VERSION': 'v ' + pkg.version,
   WEBPACK: {
     preLoaders: [
