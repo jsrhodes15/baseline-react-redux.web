@@ -1,8 +1,8 @@
 'use strict';
 
-import {API_PATH} from '../../common/constants/environment';
+import {API_PATH} from '../constants/environment';
 import {USER} from '../constants/endpoints';
-import {post} from '../services/HttpService';
+import {post} from '../services/http';
 
 export function login(email, password) {
   return new Promise(
