@@ -2,7 +2,7 @@
 
 import React, {PropTypes} from 'react';
 import {ENVIRONMENT} from '../../common/constants/environment';
-import Loading from './Loading/Loading';
+import Loading from './Loading';
 
 const Login = ({loading, email, password, handleFieldChange, handleLogin}) => (
   <div>
@@ -41,7 +41,7 @@ const Login = ({loading, email, password, handleFieldChange, handleLogin}) => (
               Login
             </button>
 
-            <div className="mdl-gid"></div>
+            <div className="mdl-grid"></div>
             <div style={{color: '#448aff'}}
                  className="mdl-cell mdl-cell--2-col mdl-cell--10-offset">{ENVIRONMENT.VERSION}</div>
 
