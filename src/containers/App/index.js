@@ -23,6 +23,9 @@ import StartScreen from '../StartScreen';
 export default class App extends Component {
   constructor(props) {
     super(props);
+    this._handleStoreChange = this._handleStoreChange.bind(this);
+    this._handleNavigationChange = this._handleNavigationChange(this);
+    this._verifyAuth = this._verifyAuth.bind(this);
   }
 
   componentDidMount() {
@@ -82,8 +85,8 @@ export default class App extends Component {
   render() {
     return (
       <Router history={hashHistory}>
-        <Route path="/" component={StartScreen}/>
-        <Route path"/dashboard" component={Dashboard}/>
+        <Route name="root" path="/" component={StartScreen}/>
+        <Route name="dashboard" path="dashboard" component={Dashboard}/>
       </Router>
     );
   }
