@@ -74,7 +74,7 @@ export default class App extends Component {
 
   _verifyAuth(nextState, replace) {
     var user_reducer = this.props.store.getState().user_reducer;
-    if (!user_reducer.profile) {
+    if (!user_reducer.profile || user_reducer.profile.status !== 'authenticated') {
       replace({
         pathname: '/',
         state: {nextPathname: nextState.location.pathname}
@@ -86,7 +86,7 @@ export default class App extends Component {
     return (
       <Router history={hashHistory}>
         <Route name="root" path="/" component={StartScreen}/>
-        <Route name="dashboard" path="dashboard" component={Dashboard}/>
+        <Route name="dashboard" path="dashboard" component={Dashboard} onEnter={this._verifyAuth}/>
       </Router>
     );
   }
