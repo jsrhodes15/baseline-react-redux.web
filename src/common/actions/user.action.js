@@ -1,6 +1,6 @@
 'use strict';
 
-import * as user from '../services/user';
+import * as userService from '../services/user.service';
 
 export const LOGIN_REQUEST = 'LOGIN_REQUEST';
 export const LOGIN_COMPLETE = 'LOGIN_COMPLETE';
@@ -10,7 +10,7 @@ export function login(email, password) {
   return dispatch => {
     dispatch(loginRequest());
 
-    return user.login(email, password)
+    return userService.login(email, password)
       .then(profile => {
         dispatch(loginComplete({profile: profile}));
       })
