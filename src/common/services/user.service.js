@@ -2,7 +2,7 @@
 
 import {ENVIRONMENT} from '../constants/environment';
 import {USER} from '../constants/endpoints';
-import {post} from '../services/http';
+import {post} from '../services/http.service';
 
 export function login(email, password) {
   return new Promise(
@@ -13,7 +13,7 @@ export function login(email, password) {
         password: password
       };
 
-      post(url, payload)
+      return post(url, payload)
         .then(response => {
           return resolve(response);
         })
