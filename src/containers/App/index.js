@@ -24,7 +24,7 @@ export default class App extends Component {
   constructor(props) {
     super(props);
     this._handleStoreChange = this._handleStoreChange.bind(this);
-    this._handleNavigationChange = this._handleNavigationChange(this);
+    this._handleNavigationChange = this._handleNavigationChange.bind(this);
     this._verifyAuth = this._verifyAuth.bind(this);
   }
 
