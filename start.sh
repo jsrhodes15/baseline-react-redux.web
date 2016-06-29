@@ -19,9 +19,6 @@ npm install -g npm3
 # Globals for npm3
 npm3 install -g webpack webpack-dev-server
 
-# delete node_modules
-rm -rf ./node_modules/
-
 # Local NPM install
 npm3 install
 
