@@ -53,8 +53,9 @@ class Dashboard extends Component {
                     <span className="visuallyhidden">Accounts</span>
                   </button>
                   <ul className="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" htmlFor="accbtn">
-                    <li className="mdl-menu__item">hello@example.com</li>
-                    <li onClick={this._logout} className="mdl-menu__item">Logout</li>
+                    <li className="mdl-menu__item" onClick={this._logout}>
+                      <i className="sidebar-user-menu material-icons">exit_to_app</i>Log Out
+                    </li>
                   </ul>
                 </div>
               </header>
