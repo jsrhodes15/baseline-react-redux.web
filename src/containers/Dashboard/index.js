@@ -3,9 +3,7 @@
 import React, {Component, PropTypes} from 'react';
 import {connect} from 'react-redux';
 
-import {
-  changeRoute
-} from '../../common/actions/navigation.action';
+import {changeRoute} from '../../common/actions/navigation.action';
 
 class Dashboard extends Component {
   constructor(props) {
