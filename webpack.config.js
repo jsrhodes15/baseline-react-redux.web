@@ -1,7 +1,13 @@
+'use strict';
+
 var webpack = require('webpack');
 var path = require('path');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var OpenBrowserPlugin = require('open-browser-webpack-plugin');
+
+/**
+ * environment specific config
+ */
 var currentEnvironment = process.env.NODE_ENV || 'local';
 var config = require('./config/' + currentEnvironment);
 
@@ -18,10 +24,7 @@ module.exports = {
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        loader: 'babel',
-        query: {
-          presets: ['react', 'es2015']
-        }
+        loader: 'babel'
       },
       {
         test: /\.html$/,
@@ -50,13 +53,6 @@ module.exports = {
     new ExtractTextPlugin('app.css'),
     new OpenBrowserPlugin({url: 'http://localhost:8080'})
   ],
-
-  // fix errors regarding missing modules
-  node: {
-    net: 'empty',
-    tls: 'empty',
-    fs: 'empty'
-  },
 
   devServer: {
     historyApiFallback: true
