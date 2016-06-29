@@ -1,6 +1,8 @@
-
+/**
+ * import
+ */
 @import './dashboard';
-@import '../../components/Login/Login';
+@import '/login';
 
 .hide {
   visibility: hidden;
@@ -30,4 +32,8 @@
 
 .mdl-textfield--floating-label.is-focused .mdl-textfield__label {
   font-size: 15px;
+}
+
+.sidebar-user-menu.material-icons {
+  padding-right: 10px;
 }
