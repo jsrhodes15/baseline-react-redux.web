@@ -4,9 +4,13 @@ import 'babel-polyfill';
 import React from 'react';
 import {render} from 'react-dom';
 import {Provider} from 'react-redux';
-import StartScreen from './containers/StartScreen';
+
+import App from './containers/App';
 import * as main_store from './common/stores/main.store';
 
+/**
+ * create Redux store
+ */
 const store = main_store.createStores();
 
 // Vendor JS
@@ -24,7 +28,7 @@ require.context('./assets/images', true, /.*/);
 if (document.getElementById('app')) {
   render(
     <Provider store={store}>
-      <StartScreen store={store}/>
+      <App store={store}/>
     </Provider>,
     document.getElementById('app')
   );
