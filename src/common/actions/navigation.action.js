@@ -1,8 +1,5 @@
 'use strict';
 
-import {SITE_CONTEXT} from '../constants/system';
-import {changeSiteContext} from './user.action';
-
 export const CHANGE_ROUTE = 'CHANGE_ROUTE';
 export const REDIRECT_FROM_LOGIN = 'REDIRECT_FROM_LOGIN';
 
@@ -24,7 +21,6 @@ export function redirectFromLogin(route) {
       route: route
     };
 
-    dispatch(changeSiteContext(SITE_CONTEXT.FRONTER));
     dispatch(dispatch_payload);
   }
 }
