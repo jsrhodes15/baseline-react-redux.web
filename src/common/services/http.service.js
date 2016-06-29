@@ -26,12 +26,43 @@ export function put(url, payload) {
   return send(url, options);
 }
 
+export function send(url, options) {
+  return new Promise(
+    (resolve, reject) => {
+      options.headers = options.headers || {};
+
+      var profile = localStorage[KEYS.USER_PROFILE];
+      if (profile) {
+        profile = JSON.parse(profile);
+        options.headers['authorization'] = 'Bearer ' + profile.access_token;
+      }
+
+      return fetch(url, options)
+        .then(checkStatus)
+        .then(response => {
+          return response.json();
+        })
+        .then(responseJson => {
+          return resolve(responseJson);
+        })
+        .catch(err => {
+          return reject(err);
+        });
+    });
+}
+
+/**
+ * builds a query string from an object
+ */
 export function serialize(data) {
-  return Object.keys(data).map(keyName => {
+  return Object.keys(data).map((keyName) => {
     return encodeURIComponent(keyName) + '=' + encodeURIComponent(data[keyName])
   }).join('&');
 }
 
+/**
+ * To have fetch Promise reject on HTTP error statuses, i.e. on any non-2xx status, define a custom response handler:
+ */
 function checkStatus(response) {
   if (response.status >= 200 && response.status < 300) {
     return response;
@@ -44,29 +75,4 @@ function checkStatus(response) {
         throw error;
       });
   }
-}
-
-function send(url, options) {
-  return new Promise(
-    (resolve, reject) => {
-      options.headers = options.headers || {};
-
-      var profile = localStorage[KEYS.USER_PROFILE];
-      if (profile) {
-        profile = JSON.parse(profile);
-        options.headers['authorization'] = 'Bearer ' + profile.access_token;
-      }
-
-      fetch(url, options)
-        .then(checkStatus)
-        .then(response => {
-          return response.json();
-        })
-        .then(responseJson => {
-          return resolve(responseJson);
-        })
-        .catch(error => {
-          return reject(error);
-        });
-    });
 }
