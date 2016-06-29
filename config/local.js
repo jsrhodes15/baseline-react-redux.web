@@ -8,9 +8,9 @@ module.exports = {
     preLoaders: [
       {
         test: /\.js$/,
-        loader: "source-map-loader"
+        loader: 'source-map-loader'
       }
     ],
-    devtool: 'source-map'
+    devtool: 'inline-source-map'
   }
 };
