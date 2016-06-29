@@ -1,6 +1,10 @@
 var webpack = require('webpack');
 var path = require('path');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
+
+/**
+ * environment specific config - default to dev
+ */
 var currentEnvironment = process.env.NODE_ENV || 'dev';
 var config = require('./config/' + currentEnvironment);
 
@@ -17,10 +21,7 @@ module.exports = {
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        loader: 'babel',
-        query: {
-          presets: ['react', 'es2015']
-        }
+        loader: 'babel'
       },
       {
         test: /\.html$/,
@@ -48,13 +49,6 @@ module.exports = {
   plugins: [
     new ExtractTextPlugin('app.css')
   ],
-
-  // fix errors regarding missing modules
-  node: {
-    net: 'empty',
-    tls: 'empty',
-    fs: 'empty'
-  },
 
   devServer: {
     historyApiFallback: true

@@ -6,7 +6,7 @@ var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var OpenBrowserPlugin = require('open-browser-webpack-plugin');
 
 /**
- * environment specific config
+ * environment specific config - default to local
  */
 var currentEnvironment = process.env.NODE_ENV || 'local';
 var config = require('./config/' + currentEnvironment);
