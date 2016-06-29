@@ -1,5 +1,7 @@
 # baseline-react-redux.web
 
+#### add codeship badge
+
 ## Intention
 This repo is intended to be used as a starting point for Redux apps presenting with React
 
