@@ -14,6 +14,8 @@ class StartScreen extends Component {
     super(props);
     this._handleFieldChange = this._handleFieldChange.bind(this);
     this._handleLogin = this._handleLogin.bind(this);
+
+    document.title = 'My App';
   }
 
   componentDidMount() {
