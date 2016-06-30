@@ -3,13 +3,20 @@
 import React, {Component, PropTypes} from 'react';
 import {connect} from 'react-redux';
 
+import {logout} from '../../common/actions/user.action';
+
 class Dashboard extends Component {
   constructor(props) {
     super(props);
+    this._logout = this._logout.bind(this);
   }
 
   componentDidMount() {
     componentHandler.upgradeDom();
+  }
+
+  _logout() {
+    this.props.dispatch(logout());
   }
   
   render() {
