@@ -1,14 +1,17 @@
 'use strict';
 
 import * as userService from '../services/user.service';
+import {changeRoute} from './navigation.action';
 
 export const LOGIN_REQUEST = 'LOGIN_REQUEST';
 export const LOGIN_COMPLETE = 'LOGIN_COMPLETE';
+export const LOGOUT = 'LOGOUT';
 export const UPDATE_LOGIN_FIELD = 'UPDATE_LOGIN_FIELD';
 
 export function login(email, password) {
   return dispatch => {
-    dispatch(loginRequest());
+
+    dispatch({type: LOGIN_REQUEST});
 
     return userService.login(email, password)
       .then(profile => {
@@ -28,6 +31,13 @@ export function loginComplete(payload) {
   };
 }
 
+export function logout() {
+  return dispatch => {
+    dispatch({type: LOGOUT});
+    dispatch(changeRoute('/'));
+  }
+}
+
 export function updateLoginField(key, value) {
   return dispatch => {
     let dispatch_payload = {
@@ -38,10 +48,4 @@ export function updateLoginField(key, value) {
 
     dispatch(dispatch_payload);
   }
-}
-
-function loginRequest() {
-  return {
-    type: LOGIN_REQUEST
-  };
 }
