@@ -3,6 +3,7 @@
 import {
   LOGIN_COMPLETE,
   LOGIN_REQUEST,
+  LOGOUT,
   UPDATE_LOGIN_FIELD
 } from '../actions/user.action';
 
@@ -19,6 +20,8 @@ export function user_reducer(state = initial_state, action) {
       return loginComplete(state, action);
     case LOGIN_REQUEST:
       return loginRequest(state, action);
+    case LOGOUT:
+      return logout(state, action);
     case UPDATE_LOGIN_FIELD:
       return updateLoginField(state, action);
     default:
@@ -40,6 +43,16 @@ function loginRequest(state, action) {
     type: LOGIN_REQUEST,
     loading: true,
     error: null
+  });
+}
+
+function logout(state, action) {
+  var login_profile = Object.assign({}, state.login_profile);
+  login_profile.password = '';
+
+  return Object.assign({}, {
+    type: LOGOUT,
+    login_profile: login_profile
   });
 }
 
