@@ -1,64 +1,47 @@
-var webpack = require('webpack');
-var path = require('path');
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
+'use strict';
+
+const webpack = require('webpack');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 /**
  * environment specific config - default to dev
  */
-var currentEnvironment = process.env.NODE_ENV || 'dev';
-var config = require('./config/' + currentEnvironment);
+const current_environment = process.env.NODE_ENV || 'dev';
+const config = require('./config/' + current_environment);
+
+/**
+ * common webpack config
+ */
+const webpack_common = require('./webpack.common.config');
 
 module.exports = {
   context: __dirname + '/src',
-  entry: {
-    javascript: './app.js',
-    html: './index.html'
+
+  entry: [
+    // Set up an ES6-ish environment
+    'babel-polyfill',
+
+    // js entry
+    './app.js',
+
+    // html entry
+    './index.html'
+  ],
+
+  externals: {
+    // required for storage module
+    'react-native': {}
   },
 
   module: {
     preLoaders: config.WEBPACK.preLoaders,
-    loaders: [
-      {
-        test: /\.js$/,
-        exclude: /node_modules/,
-        loader: 'babel'
-      },
-      {
-        test: /\.html$/,
-        loader: 'file?name=[name].[ext]'
-      },
-      {
-        test: /\.jpe?g$|\.gif$|\.ico$|\.png$|\.svg$|\.wav$|\.mp3$/,
-        loader: 'file?name=assets/images/[name].[ext]'
-      },
-      {
-        test: /\.woff$|\.ttf$|\.eot$/,
-        loader: 'file?name=assets/fonts/[name].[ext]'
-      },
-      {
-        test: /\.css$/,
-        loader: ExtractTextPlugin.extract('style-loader', 'css-loader')
-      },
-      {
-        test: /\.scss$/,
-        loader: ExtractTextPlugin.extract('style', 'css!sass')
-      }
-    ]
+
+    loaders: webpack_common.loaders
   },
 
   plugins: [
     new ExtractTextPlugin('app.css')
   ],
-
-  devServer: {
-    historyApiFallback: true
-  },
-
-  // Need to set this so webpack won't attempt to load node_modules in *.common
-  // In relation to the folder we are referencing
-  resolveLoader: {
-    root: path.join(__dirname, 'node_modules')
-  },
 
   output: {
     filename: 'app.js',
