@@ -12,6 +12,10 @@
 node_modules
 jspm_packages
 
+# unit tests
+/unit-tests
+/code-coverage
+
 # Optional npm cache directory
 .npm
 /npm-debug.log
