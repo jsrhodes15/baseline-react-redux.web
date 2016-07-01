@@ -5,21 +5,22 @@ import thunkMiddleware from 'redux-thunk';
 import createLogger from 'redux-logger';
 import rootReducer from '../reducers';
 
-import {ENVIRONMENT} from '../constants/environment';
-
-export let createStores = (initialState) => {
+export const createStores = (initialState) => {
   
   const store = createStore(
     rootReducer,
     initialState,
     compose(
       applyMiddleware(thunkMiddleware, createLogger()),
+      // redux dev tools extension
       window.devToolsExtension ? window.devToolsExtension() : f => f
     )
   );
 
-  // only run hot if not local
-  if (module.hot && ENVIRONMENT.ENV_TYPE === 'local') {
+  /**
+   * only runs locally - enable webpack hot module replacement for reducers
+   */
+  if (module.hot) {
     module.hot.accept('../reducers', () => {
       const nextRootReducer = require('../reducers').default;
       store.replaceReducer(nextRootReducer);
