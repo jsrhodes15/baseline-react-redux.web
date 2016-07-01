@@ -4,13 +4,18 @@ module.exports = {
   'ENV_TYPE': 'local',
   'API_PATH': 'http://localhost:1337',
   'VERSION': 'v ' + pkg.version,
+
+  /**
+   * environment specific webpack config
+   */
   WEBPACK: {
     preLoaders: [
       {
-        test: /\.js$/,
-        loader: 'source-map-loader'
+        loader: 'source-map-loader',
+        test: /\.js$/
       }
     ],
+
     devtool: 'inline-source-map'
   }
 };
