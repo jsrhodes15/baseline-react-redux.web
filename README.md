@@ -20,30 +20,46 @@ app.url.here
 - `nvm alias default 4.4.6`
 
 ### Usage
-Run `./start.sh`
-
-The bash script bundles the app via webpack and fires up the webpack-dev-server. Local output is built in the `build` directory.
-
-- leads web will open in a browser @ `http://localhost:8080`
-
-- mocha unit tests will open in a browser @ `http://localhost:8082`
-
-### Changing Environment locally
-Run locally using different configs by setting the `NODE_ENV` (development, qa, production)
-
-Run `NODE_ENV='development' ./start.sh`
-
-### Continuous Deployment
-CD is handled per branch via Codeship
-
-For a manual deployment, set the `NODE_ENV`, run npm3 start, and webpack. Deploy output is built in the `dist` directory.
-
-```javascript
-  NODE_ENV='qa' npm3 start
+Bundle the app via webpack, install all dependencies, and fire up the webpack-dev-server @ `http://localhost:8080`
+```
+./start.sh 
 ```
 
-```javascript
-  NODE_ENV='qa' webpack --config webpack.deploy.config.js
+Build local output in the `build` directory
+```
+webpack --config webpack.config.js
+```
+
+Permission denied when running **start.sh**?
+```
+chmod +x ./start.sh
+```
+
+### Testing
+Build test output in the `unit-tests` directory
+```
+webpack --config webpack.test.config.js
+```
+
+Bundle mocha unit tests and fire up webpack-dev-server @ `http://localhost:8082`
+```
+webpack-dev-server --config webpack.test.config.js  --content-base unit-tests/ --inline
+```
+
+### Change local environment
+Run locally using different env configs by setting the `NODE_ENV` (development, qa, production)
+
+```
+NODE_ENV='development' ./start.sh
+```
+
+### Deployment
+Continuous Deployment is handled per branch via Codeship. Environments can be changed by setting `NODE_ENV`.
+
+Output is built in the `dist` directory.
+
+```
+NODE_ENV='qa' npm3 install && npm3 start && webpack --config webpack.deploy.config.js
 ```
 
 ### Dev Tools
