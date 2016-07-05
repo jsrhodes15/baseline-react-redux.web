@@ -25,11 +25,5 @@ npm3 install
 # run start scripts
 npm3 start
 
-# delete build folder
-rm -rf ./build/
-
-# Webpack
-webpack --config webpack.config.js
-
 # Start the webpack dev server
 webpack-dev-server --config webpack.config.js --content-base build/ --inline --hot
