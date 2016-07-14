@@ -10,6 +10,11 @@ import {routerMiddleware} from 'react-router-redux'
 import thunkMiddleware from 'redux-thunk';
 
 /**
+ * local middleware
+ */
+import {handleForbidden, notifyError} from '../middleware/error.middleware';
+
+/**
  * import root reducer
  */
 import rootReducer from '../reducers';
@@ -26,7 +31,7 @@ export default (initialState) => {
   /**
    * baseline middleware
    */
-  const baseline_middlewares = [thunkMiddleware, routingMiddleware];
+  const baseline_middlewares = [thunkMiddleware, routingMiddleware, notifyError, handleForbidden];
 
   /**
    * build store for non-production environments
