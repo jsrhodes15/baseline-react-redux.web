@@ -11,7 +11,7 @@ import Storage from 'react-native-storage';
  *
  *  https://www.npmjs.com/package/react-native-storage
  */
-export const initStorage = (binding_context) => {
+export default (binding_context) => {
 
   if (binding_context) {
 
