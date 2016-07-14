@@ -2,7 +2,7 @@ import React, {PropTypes} from 'react';
 import {ENVIRONMENT} from '../../common/constants/environment';
 import Loading from './Loading';
 
-const Login = ({loading, email, password, handleFieldChange, handleLogin}) => (
+export default ({loading, email, password, handleFieldChange, handleLogin}) => (
   <div>
     <div className="mdl-layout mdl-js-layout mdl-layout--fixed-header">
       <div id="login-container" className="android-content mdl-layout__content md">
@@ -54,13 +54,3 @@ const Login = ({loading, email, password, handleFieldChange, handleLogin}) => (
     </div>
   </div>
 );
-
-Login.propTypes = {
-  loading: PropTypes.bool,
-  email: PropTypes.string,
-  password: PropTypes.string,
-  handleFieldChange: PropTypes.func.isRequired,
-  handleLogin: PropTypes.func.isRequired
-};
-
-export default Login;
