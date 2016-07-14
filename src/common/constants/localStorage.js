@@ -1,3 +1,3 @@
 export const KEYS = {
-  USER_PROFILE: 'userProfile'
+  USER_PROFILE: 'user:profile'
 };
