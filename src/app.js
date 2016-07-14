@@ -5,18 +5,18 @@ import {render} from 'react-dom';
 import {Provider} from 'react-redux';
 
 import App from './containers/App';
-import * as main_store from './common/stores/main.store';
-import * as storageInitializer from './common/initializers/storage.initializer';
+import createStore from './common/stores/main.store';
+import initStorage from './common/initializers/storage.initializer';
 
 /**
  * create Redux store
  */
-const store = main_store.createStores();
+const store = createStore();
 
 /**
  * initialize storage - pass appropriate binding context
  */
-storageInitializer.initStorage(window);
+initStorage(window);
 
 // Vendor JS
 require('../node_modules/material-design-lite/dist/material.min.js');
