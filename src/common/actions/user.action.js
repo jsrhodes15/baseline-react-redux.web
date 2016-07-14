@@ -59,6 +59,8 @@ export function saveProfile(profile) {
 
 /**
  * set the value for a login field (email, password, etc.)
+ *  note: this could also be handled via StartScreen state
+ *    we are handling via redux to persist values and also handle cross platform
  */
 export function updateLoginField(key, value) {
   return dispatch => {
