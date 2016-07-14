@@ -3,9 +3,9 @@
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 /**
- * environment specific config - default to dev
+ * environment specific config - default to production
  */
-const current_environment = process.env.NODE_ENV || 'dev';
+const current_environment = process.env.NODE_ENV || 'production';
 const config = require('./config/' + current_environment);
 
 /**

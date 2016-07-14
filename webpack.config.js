@@ -4,9 +4,9 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const OpenBrowserPlugin = require('open-browser-webpack-plugin');
 
 /**
- * environment specific config - default to local
+ * environment specific config - default to dev
  */
-const current_environment = process.env.NODE_ENV || 'local';
+const current_environment = process.env.NODE_ENV || 'dev';
 const config = require('./config/' + current_environment);
 
 /**

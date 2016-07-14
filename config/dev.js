@@ -2,15 +2,20 @@ var pkg = require('../package.json');
 
 module.exports = {
   'ENV_TYPE': 'dev',
-  'API_PATH': 'https://baseline-sails-api.herokuapp.com',
+  'API_PATH': 'http://localhost:1337',
   'VERSION': 'v ' + pkg.version,
 
   /**
    * environment specific webpack config
    */
   WEBPACK: {
-    preLoaders: [],
+    preLoaders: [
+      {
+        loader: 'source-map-loader',
+        test: /\.js$/
+      }
+    ],
 
-    devtool: 'eval'
+    devtool: 'inline-source-map'
   }
 };
