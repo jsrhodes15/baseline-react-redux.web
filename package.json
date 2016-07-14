@@ -8,6 +8,7 @@
     "url": "https://github.com/johnrhampton/baseline-react-redux.web"
   },
   "scripts": {
+    "dev": "npm3 install && npm3 start && webpack-dev-server --config webpack.config.js --content-base build/ --inline --hot",
     "start": "node ./config/scripts/start.js"
   },
   "author": "JRH",
