@@ -5,7 +5,7 @@ import thunkMiddleware from 'redux-thunk';
 import createLogger from 'redux-logger';
 import rootReducer from '../reducers';
 
-export const createStores = (initialState) => {
+export default (initialState) => {
   
   const store = createStore(
     rootReducer,
