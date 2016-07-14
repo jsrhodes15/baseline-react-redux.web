@@ -5,14 +5,14 @@ import {
   UPDATE_LOGIN_FIELD
 } from '../actions/user.action';
 
-var initial_state = {
+const initial_state = {
   login_profile: {
     email: '',
     password: ''
   }
 };
 
-export function user_reducer(state = initial_state, action) {
+export default (state = initial_state, action) => {
   switch (action.type) {
     case LOGIN_COMPLETE:
       return loginComplete(state, action);

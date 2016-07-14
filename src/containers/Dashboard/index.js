@@ -18,7 +18,7 @@ class Dashboard extends Component {
   }
   
   render() {
-    var {user_reducer} = this.props;
+    var {user} = this.props;
 
     return (
         <div>
@@ -51,7 +51,7 @@ class Dashboard extends Component {
               <header className="drawer-header">
                 <i className="avatar-icon material-icons">face</i>
                 <div className="avatar-dropdown">
-                  <span>Hi, {user_reducer.profile.email}</span>
+                  <span>Hi, {user.profile.email}</span>
                   <div className="mdl-layout-spacer"></div>
                   <button id="accbtn" className="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
                     <i className="material-icons" role="presentation">arrow_drop_down</i>
@@ -98,9 +98,9 @@ Dashboard.propTypes = {
 };
 
 function mapStateToProps(state) {
-  const {user_reducer} = state;
+  const {user} = state;
   return {
-    user_reducer
+    user
   };
 }
 

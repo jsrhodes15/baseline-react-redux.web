@@ -23,7 +23,7 @@ class StartScreen extends Component {
   }
 
   _handleLogin() {
-    var login_profile = this.props.user_reducer.login_profile;
+    var login_profile = this.props.user.login_profile;
     if (!login_profile.email || !login_profile.password) {
       this._showSnackBar('Email and Password are required!');
       return;
@@ -54,12 +54,12 @@ class StartScreen extends Component {
   }
 
   render() {
-    let {user_reducer} = this.props;
+    let {user} = this.props;
 
     return (
-      <Login loading={user_reducer.loading}
-             email={user_reducer.login_profile.email}
-             password={user_reducer.login_profile.password}
+      <Login loading={user.loading}
+             email={user.login_profile.email}
+             password={user.login_profile.password}
              handleFieldChange={this._handleFieldChange}
              handleLogin={this._handleLogin}/>
     );
@@ -67,9 +67,9 @@ class StartScreen extends Component {
 }
 
 function mapStateToProps(state) {
-  const {user_reducer} = state;
+  const {user} = state;
   return {
-    user_reducer
+    user
   };
 }
 
