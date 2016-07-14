@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 
-import {changeRoute} from '../../common/actions/navigation.action';
 import {login, updateLoginField, validateProfile} from '../../common/actions/user.action';
 import {BG_IMAGES} from '../../common/constants/backgrounds';
 
@@ -17,6 +16,10 @@ class StartScreen extends Component {
   componentDidMount() {
     this._setBackGround();
     componentHandler.upgradeDom();
+  }
+
+  componentWillMount() {
+    this.props.dispatch(validateProfile());
   }
 
   _handleLogin() {
