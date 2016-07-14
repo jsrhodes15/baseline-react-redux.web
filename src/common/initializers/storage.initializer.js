@@ -1,5 +1,3 @@
-'use strict';
-
 import Storage from 'react-native-storage';
 
 /**

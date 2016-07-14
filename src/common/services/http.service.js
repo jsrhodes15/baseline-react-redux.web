@@ -1,5 +1,3 @@
-'use strict';
-
 require('isomorphic-fetch');
 import {KEYS} from '../constants/localStorage';
 

@@ -1,5 +1,3 @@
-'use strict';
-
 import {
   LOGIN_COMPLETE,
   LOGIN_REQUEST,

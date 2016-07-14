@@ -1,9 +1,10 @@
-'use strict';
-
 import {ENVIRONMENT} from '../constants/environment';
 import {USER} from '../constants/endpoints';
 import {post} from '../services/http.service';
 
+/**
+ * attempts to login a user
+ */
 export function login(email, password) {
   return new Promise(
     (resolve, reject) => {
