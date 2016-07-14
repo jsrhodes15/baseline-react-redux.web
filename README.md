@@ -13,26 +13,28 @@ The app is deployed to [Firebase](https://firebase.google.com/) via Codeship
 app.url.here
 
 ### Prerequisites
-- [Node Version Manager](https://github.com/creationix/nvm)
 
-- Node 4.4.6 (using `nvm install 4.4.6`)
+#### NVM
+- [Node Version Manager](https://github.com/creationix/nvm) and Node 4.4.7
+```
+nvm install 4.4.7
+nvm alias default 4.4.7
+```
 
-- `nvm alias default 4.4.6`
+#### Global Dependencies
+```
+npm install -g npm3 webpack webpack-dev-server
+```
 
 ### Usage
-Bundle the app via webpack, install all dependencies, and fire up the webpack-dev-server @ `http://localhost:8080`
+Install local dependencies, bundle the app via webpack, and fire up the webpack-dev-server @ `http://localhost:8080`
 ```
-./start.sh 
+npm3 run dev
 ```
 
 Build local output in the `build` directory
 ```
 webpack --config webpack.config.js
-```
-
-Permission denied when running **start.sh**?
-```
-chmod +x ./start.sh
 ```
 
 ### Testing
@@ -50,7 +52,7 @@ webpack-dev-server --config webpack.test.config.js  --content-base unit-tests/ -
 Run locally using different env configs by setting the `NODE_ENV` (development, qa, production)
 
 ```
-NODE_ENV='development' ./start.sh
+NODE_ENV='development' npm3 start
 ```
 
 ### Deployment
