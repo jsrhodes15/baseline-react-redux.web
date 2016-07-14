@@ -43,7 +43,11 @@ export function loginComplete(payload) {
  */
 export function logout() {
   return dispatch => {
+    let logout_profile = {};
+
     dispatch({type: LOGOUT});
+    dispatch(saveProfile(logout_profile));
+    dispatch(push('/'));
   }
 }
 
