@@ -1,9 +1,8 @@
 import React, {PropTypes} from 'react';
 import classNames from 'classnames';
 
-const Loading = ({loading}) => {
-
-  var loadingClass = classNames('dissolve-animation', {
+export default ({loading}) => {
+  let loadingClass = classNames('dissolve-animation', {
     'hide': !loading
   });
 
@@ -14,9 +13,3 @@ const Loading = ({loading}) => {
     </div>
   );
 };
-
-Loading.propTypes = {
-  loading: PropTypes.bool
-};
-
-export default Loading;
