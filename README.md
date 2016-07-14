@@ -3,9 +3,13 @@
 #### add codeship badge
 
 ## Intention
-This repo is intended to be used as a starting point for Redux apps presenting with React
+This repo is intended to be used as a guideline for Redux apps presenting with React
 
 Our API is located here - [baseline-sails.api](https://github.com/johnrhampton/baseline-sails.api)
+
+## Features
+- [react-router-redux](https://github.com/reactjs/react-router-redux)
+- [react-native-storage](https://github.com/sunnylqm/react-native-storage)
 
 ## Demo
 The app is deployed to [Firebase](https://firebase.google.com/) via Codeship
