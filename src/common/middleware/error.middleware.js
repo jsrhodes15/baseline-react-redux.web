@@ -1,6 +1,6 @@
 import {logout} from '../actions/user.action';
 import {showSnack} from '../actions/notify.action';
-import {ERROR} from '../constants/snackbar_options';
+import {ERROR} from '../constants/snackbar';
 
 /**
  * handle any requests that responded with 403
