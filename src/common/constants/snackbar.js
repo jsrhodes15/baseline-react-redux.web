@@ -1,4 +1,3 @@
-
 export const ERROR = {
   background: '#F44336',
   duration: 5000,
