@@ -1,4 +1,6 @@
 import {logout} from '../actions/user.action';
+import {showSnack} from '../actions/notify.action';
+import {ERROR} from '../constants/snackbar_options';
 
 /**
  * handle any requests that responded with 403
@@ -6,8 +8,7 @@ import {logout} from '../actions/user.action';
 export const handleForbidden = store => next => action => {
   if (action.error && isForbidden(action.error)) {
     store.dispatch(logout());
-    // todo: swap console with snackbar notification
-    console.error('Your token has expired, please log in');
+    store.dispatch(showSnack({message: 'Your token has expired, please log in', type: ERROR}));
   }
   return next(action);
 };
@@ -24,8 +25,7 @@ const isForbidden = (error = {}) => {
  */
 export const notifyError = store => next => action => {
   if (action.error && !isForbidden(action.error)) {
-    // todo: swap console with snackbar notification
-    console.error(action.error.message || 'Whoops, an error occurred');
+    store.dispatch(showSnack({message: action.error.message || 'Whoops, an error occurred', type: ERROR}));
   }
   return next(action);
 };
