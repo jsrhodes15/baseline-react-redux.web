@@ -41,13 +41,8 @@ export default ({loading, email, password, handleFieldChange, handleLogin}) => (
 
             <div className="mdl-grid"></div>
             <div style={{color: '#448aff'}}
-                 className="mdl-cell mdl-cell--2-col mdl-cell--10-offset">{ENVIRONMENT.VERSION}</div>
-
-            <div id="login-snack-bar" className="snack-bar mdl-js-snackbar mdl-snackbar">
-              <div className="mdl-snackbar__text"></div>
-              <button className="mdl-snackbar__action" type="button"></button>
+                 className="mdl-cell mdl-cell--2-col mdl-cell--10-offset">{ENVIRONMENT.VERSION}
             </div>
-
           </div>
         </div>
       </div>
