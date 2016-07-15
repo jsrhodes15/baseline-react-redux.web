@@ -1,13 +1,16 @@
 import SnackBar from 'node-snackbar';
 import {INFO} from '../constants/snackbar';
 
-export const REMOVE_SNACK = 'REMOVE_SNACK';
-export const SHOW_SNACK = 'SHOW_NOTIFY';
+export const CLEAR_SNACK_MESSAGE = 'CLEAR_SNACK_MESSAGE';
+export const SHOW_SNACK = 'SHOW_SNACK';
 
-export function removeSnack() {
+/**
+ * clears the snack message from our store
+ */
+export function clearSnackMessage() {
   return dispatch => {
     let dispatch_payload = {
-      type: REMOVE_SNACK,
+      type: CLEAR_SNACK_MESSAGE,
       message: null
     };
 
@@ -15,6 +18,9 @@ export function removeSnack() {
   }
 }
 
+/**
+ * displays a snack bar notification
+ */
 export function showSnack(payload) {
   return dispatch => {
     let dispatch_payload = {
@@ -32,10 +38,10 @@ export function showSnack(payload) {
       backgroundColor: options.background,
       duration: options.duration,
       actionTextColor: '#FFFFFF',
-      showActionButton: options.showActionButton
+      showAction: options.showAction
     });
 
     dispatch(dispatch_payload);
-    dispatch(removeSnack());
+    dispatch(clearSnackMessage());
   }
 }

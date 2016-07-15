@@ -1,12 +1,12 @@
 import {
-  REMOVE_SNACK,
+  CLEAR_SNACK_MESSAGE,
   SHOW_SNACK
 } from '../actions/notify.action';
 
 export default (state = {}, action) => {
   switch (action.type) {
-    case REMOVE_SNACK:
-      return removeSnack(state, action);
+    case CLEAR_SNACK_MESSAGE:
+      return clearSnackMessage(state, action);
     case SHOW_SNACK:
       return showSnack(state, action);
     default:
@@ -14,9 +14,9 @@ export default (state = {}, action) => {
   }
 }
 
-function removeSnack(state, action) {
+function clearSnackMessage(state, action) {
   return Object.assign({}, state, {
-    type: REMOVE_SNACK,
+    type: CLEAR_SNACK_MESSAGE,
     message: action.message
   });
 }
