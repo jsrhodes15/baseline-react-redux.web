@@ -2,7 +2,9 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 
 import {login, updateLoginField, validateProfile} from '../../common/actions/user.action';
+import {showSnack} from '../../common/actions/notify.action';
 import {BG_IMAGES} from '../../common/constants/backgrounds';
+import {WARN} from '../../common/constants/snackbar';
 
 import Login from '../../components/Login/Login';
 
@@ -25,7 +27,7 @@ class StartScreen extends Component {
   _handleLogin() {
     var login_profile = this.props.user.login_profile;
     if (!login_profile.email || !login_profile.password) {
-      this._showSnackBar('Email and Password are required!');
+      this.props.dispatch(showSnack({message: 'Email and Password are required!', type: WARN}));
       return;
     }
 
@@ -48,12 +50,6 @@ class StartScreen extends Component {
     let login_container = document.getElementById('login-container');
     login_container.style.background = 'url(' + getRandomBGPhoto() + ') top center no-repeat';
     login_container.style.backgroundSize = 'cover';
-  }
-
-  _showSnackBar(message) {
-    let data = {message: message, timeout: 2500};
-    let snackbarContainer = document.querySelector('#login-snack-bar');
-    snackbarContainer.MaterialSnackbar.showSnackbar(data);
   }
 
   render() {
