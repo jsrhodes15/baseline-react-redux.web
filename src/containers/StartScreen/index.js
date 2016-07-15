@@ -36,9 +36,12 @@ class StartScreen extends Component {
     this.props.dispatch(updateLoginField(field, event.target.value));
   }
 
+  /**
+   * randomly selects a background on refresh
+   */
   _setBackGround() {
     function getRandomBGPhoto() {
-      var photo_number = Math.floor(Math.random() * BG_IMAGES.length);
+      let photo_number = Math.floor(Math.random() * BG_IMAGES.length);
       return BG_IMAGES[photo_number];
     }
 
@@ -48,8 +51,8 @@ class StartScreen extends Component {
   }
 
   _showSnackBar(message) {
-    var data = {message: message, timeout: 2500};
-    var snackbarContainer = document.querySelector('#login-snack-bar');
+    let data = {message: message, timeout: 2500};
+    let snackbarContainer = document.querySelector('#login-snack-bar');
     snackbarContainer.MaterialSnackbar.showSnackbar(data);
   }
 
