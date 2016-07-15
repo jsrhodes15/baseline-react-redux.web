@@ -13,6 +13,12 @@ module.exports = {
       {
         loader: 'source-map-loader',
         test: /\.js$/
+      },
+
+      {
+        test: /\.js?$/,
+        loader: 'eslint',
+        exclude: /node_modules/
       }
     ],
 

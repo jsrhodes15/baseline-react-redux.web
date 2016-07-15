@@ -1,0 +1,39 @@
+
+// OFF = 0 WARN = 1 ERROR = 2
+
+{
+  "root": true,
+
+  "env": {
+    "es6": true,        // We are writing ES6 code
+    "browser": true,    // for the browser
+    "commonjs": true    // and use require() for stylesheets
+  },
+
+  "ecmaFeatures": {
+    "jsx": true,
+    "modules": true
+  },
+
+  "plugins": [
+    "react"
+  ],
+
+  "parserOptions": {
+    "sourceType": "module",
+
+    "ecmaFeatures": {
+      "jsx": true,
+      "modules": true
+    }
+  },
+
+  "extends": "eslint:recommended",
+
+  "rules": {
+    "no-undef": 0,
+    "no-unused-vars": 0,
+    "no-console": [1, {"allow": ["warn", "error"]}],
+    "no-irregular-whitespace": 0
+  }
+}

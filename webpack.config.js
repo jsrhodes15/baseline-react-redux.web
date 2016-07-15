@@ -52,6 +52,14 @@ module.exports = {
     historyApiFallback: true
   },
 
+  /**
+   * configure linter
+   */
+  eslint: {
+    failOnWarning: false,
+    failOnError: true
+  },
+
   output: {
     filename: 'app.js',
     path: __dirname + '/build'
