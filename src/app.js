@@ -21,6 +21,7 @@ require('../node_modules/material-design-lite/dist/material.min.js');
 
 // Vendor CSS
 require('../node_modules/material-design-lite/dist/material.blue_grey-blue.min.css');
+require('../node_modules/node-snackbar/dist/snackbar.min.css');
 
 // Stylesheets
 require('./assets/styles/main.scss');
