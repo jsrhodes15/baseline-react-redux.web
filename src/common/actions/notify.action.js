@@ -1,4 +1,4 @@
-import SnackBar from 'node-snackbar';
+import {show} from 'js-snackbar';
 import {INFO} from '../constants/snackbar';
 
 export const CLEAR_SNACK_MESSAGE = 'CLEAR_SNACK_MESSAGE';
@@ -31,7 +31,7 @@ export function showSnack(payload) {
     let options = payload.type || INFO;
     let pos = payload.pos || options.pos;
 
-    SnackBar.show({
+    show({
       text: payload.message,
       textColor: '#FFFFFF',
       pos: pos,
