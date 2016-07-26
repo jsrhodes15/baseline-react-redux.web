@@ -6,8 +6,7 @@ import {
 
 const initial_state = {
   login_profile: {
-    email: '',
-    password: ''
+    email: ''
   }
 };
 
@@ -29,6 +28,7 @@ function loginComplete(state, action) {
     type: LOGIN_COMPLETE,
     error: action.error,
     profile: action.profile,
+    login_profile: {email: action.profile.email},
     loading: false
   });
 }
@@ -42,11 +42,8 @@ function loginRequest(state, action) {
 }
 
 function logout(state, action) {
-  var login_profile = Object.assign({}, state.login_profile);
-  login_profile.password = '';
-
   return Object.assign({}, {
     type: LOGOUT,
-    login_profile: login_profile
+    login_profile: state.login_profile
   });
 }
