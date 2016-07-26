@@ -5,7 +5,7 @@
   var path = require('path');
 
   var currentEnvironment = process.env.NODE_ENV || 'dev';
-  var config = require('../' + currentEnvironment);
+  var config = require('../app.' + currentEnvironment);
 
   delete config.WEBPACK;
 
