@@ -8,9 +8,10 @@
     "url": "https://github.com/johnrhampton/baseline-react-redux.web"
   },
   "scripts": {
-    "build": "webpack --config ./config/webpack.config.dev.js",
-    "prestart": "npm3 install && node ./config/scripts/start.js",
-    "start": "webpack-dev-server --config ./config/webpack.config.dev.js --content-base build/ --inline --hot"
+    "build": "npm3 start && webpack --config ./config/webpack.config.dev.js",
+    "dev": "npm3 start && webpack-dev-server --config ./config/webpack.config.dev.js --content-base build/ --inline --hot",
+    "dist": "npm3 start && webpack --config ./config/webpack.config.prod.js",
+    "start": "npm3 install"
   },
   "author": "JRH",
   "license": "ISC",
