@@ -99,6 +99,9 @@ module.exports = {
 
     new OpenBrowserPlugin({url: 'http://localhost:8080'}),
 
-    new webpack.DefinePlugin({ 'process.env.NODE_ENV': '"development"' })
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': '"dev"',
+      'window.APP_ENV': require('./app.dev')
+    })
   ]
 };
