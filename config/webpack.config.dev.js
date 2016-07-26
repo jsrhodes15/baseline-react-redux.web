@@ -11,7 +11,7 @@ var srcPath = path.resolve(__dirname, '../src');
 var nodeModulesPath = path.join(__dirname, '../node_modules');
 
 module.exports = {
-  devtool: 'eval',
+  devtool: 'inline-source-map',
 
   entry: [
     path.join(srcPath, '/assets/styles/main.scss'),
@@ -34,6 +34,11 @@ module.exports = {
 
   module: {
     preLoaders: [
+      {
+        loader: 'source-map',
+        test: /\.js$/
+      },
+
       {
         test: /\.js$/,
         loader: 'eslint',
