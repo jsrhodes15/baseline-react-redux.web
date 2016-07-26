@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 
-import {login, updateLoginField, validateProfile} from '../../common/actions/user.action';
+import {login, validateProfile} from '../../common/actions/user.action';
 import {showSnack} from '../../common/actions/notify.action';
 import {BG_IMAGES} from '../../common/constants/backgrounds';
 import {WARN} from '../../common/constants/snackbar';
