@@ -20,7 +20,7 @@ module.exports = {
 
   output: {
     filename: 'app.js',
-    path: __dirname + '/build'
+    path: './build'
   },
 
   resolve: {
@@ -66,7 +66,7 @@ module.exports = {
 
       {
         test: /\.(jpg|png|gif|eot|svg|ttf|woff|woff2)$/,
-        loader: 'file',
+        loader: 'file?name=assets/images/[name].[ext]',
       },
 
       {
