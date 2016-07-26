@@ -111,7 +111,7 @@ module.exports = {
     }),
 
     new webpack.DefinePlugin({
-      'process.env.NODE_ENV': '"prod"',
+      'process.env.NODE_ENV': '"production"',
       'window.APP_ENV': JSON.stringify(require('./app.prod'))
     }),
 
