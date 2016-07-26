@@ -1,5 +1,5 @@
 import React from 'react';
-import {ENVIRONMENT} from '../../common/constants/environment';
+import {APP_ENV} from '../../common/constants/environment';
 import Loading from './Loading';
 
 export default ({loading, email, password, handleFieldChange, handleLogin}) => (
@@ -41,7 +41,7 @@ export default ({loading, email, password, handleFieldChange, handleLogin}) => (
 
             <div className="mdl-grid"></div>
             <div style={{color: '#448aff'}}
-                 className="mdl-cell mdl-cell--2-col mdl-cell--10-offset">{ENVIRONMENT.VERSION}
+                 className="mdl-cell mdl-cell--2-col mdl-cell--10-offset">{APP_ENV.VERSION}
             </div>
           </div>
         </div>

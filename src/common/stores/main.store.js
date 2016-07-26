@@ -1,7 +1,7 @@
 import {createStore, applyMiddleware, compose} from 'redux';
 import {hashHistory} from 'react-router';
 
-import {ENVIRONMENT} from '../constants/environment';
+import {APP_ENV} from '../constants/environment';
 
 /**
  * third party middleware
@@ -36,7 +36,7 @@ export default (initialState) => {
   /**
    * build store for non-production environments
    */
-  if (ENVIRONMENT.ENV_TYPE !== 'production') {
+  if (APP_ENV.ENV_TYPE !== 'production') {
     const dev_store = require('./dev.store');
     return dev_store.default(initialState, rootReducer, baseline_middlewares);
   }
