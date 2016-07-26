@@ -6,7 +6,6 @@ import {KEYS} from '../constants/localStorage';
 export const LOGIN_REQUEST = 'LOGIN_REQUEST';
 export const LOGIN_COMPLETE = 'LOGIN_COMPLETE';
 export const LOGOUT = 'LOGOUT';
-export const UPDATE_LOGIN_FIELD = 'UPDATE_LOGIN_FIELD';
 
 /**
  * attempts to log in a user
@@ -59,23 +58,6 @@ export function saveProfile(profile) {
   return dispatch => {
     storageService.save(KEYS.USER_PROFILE, profile);
     dispatch({type: KEYS.USER_PROFILE});
-  }
-}
-
-/**
- * set the value for a login field (email, password, etc.)
- *  note: this could also be handled via StartScreen state
- *    we are handling via redux to persist values and also handle cross platform
- */
-export function updateLoginField(key, value) {
-  return dispatch => {
-    let dispatch_payload = {
-      type: UPDATE_LOGIN_FIELD,
-      key: key,
-      value: value
-    };
-
-    dispatch(dispatch_payload);
   }
 }
 

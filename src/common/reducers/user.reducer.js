@@ -1,8 +1,7 @@
 import {
   LOGIN_COMPLETE,
   LOGIN_REQUEST,
-  LOGOUT,
-  UPDATE_LOGIN_FIELD
+  LOGOUT
 } from '../actions/user.action';
 
 const initial_state = {
@@ -20,8 +19,6 @@ export default (state = initial_state, action) => {
       return loginRequest(state, action);
     case LOGOUT:
       return logout(state, action);
-    case UPDATE_LOGIN_FIELD:
-      return updateLoginField(state, action);
     default:
       return state;
   }
@@ -50,17 +47,6 @@ function logout(state, action) {
 
   return Object.assign({}, {
     type: LOGOUT,
-    login_profile: login_profile
-  });
-}
-
-function updateLoginField(state, action) {
-  var login_profile = Object.assign({}, state.login_profile);
-  login_profile[action.key] = action.value;
-
-  return Object.assign({}, state, {
-    type: UPDATE_LOGIN_FIELD,
-    error: null,
     login_profile: login_profile
   });
 }
