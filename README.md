@@ -9,7 +9,6 @@ Our API is located here - [baseline-sails.api](https://github.com/johnrhampton/b
 
 ## Features
 - [react-router-redux](https://github.com/reactjs/react-router-redux)
-- [react-native-storage](https://github.com/sunnylqm/react-native-storage)
 
 ## Demo
 The app is deployed to [Firebase](https://firebase.google.com/) via Codeship
@@ -27,45 +26,31 @@ nvm alias default 4.4.7
 
 #### Global Dependencies
 ```
-npm install -g npm3 webpack webpack-dev-server
+npm install -g npm3
 ```
 
 ### Usage
 Install local dependencies, bundle the app via webpack, and fire up the webpack-dev-server @ `http://localhost:8080`
 ```
-npm3 run dev
+npm run dev
 ```
 
-Build local output in the `build` directory
+Build dev output in the `build` directory
 ```
-webpack --config webpack.config.js
-```
-
-### Testing
-Build test output in the `unit-tests` directory
-```
-webpack --config webpack.test.config.js
+npm run build
 ```
 
+### Testing ** NOT IMPLEMENTED YET
 Bundle mocha unit tests and fire up webpack-dev-server @ `http://localhost:8082`
 ```
-webpack-dev-server --config webpack.test.config.js  --content-base unit-tests/ --inline
-```
-
-### Change local environment
-Run locally using different env configs by setting the `NODE_ENV` (development, qa, production)
-
-```
-NODE_ENV='development' npm3 start
+npm test
 ```
 
 ### Deployment
-Continuous Deployment is handled per branch via Codeship. Environments can be changed by setting `NODE_ENV`.
-
-Output is built in the `dist` directory.
+Continuous Deployment is handled per branch via Codeship.  Output is built in the `dist` directory.
 
 ```
-NODE_ENV='qa' npm3 install && npm3 start && webpack --config webpack.deploy.config.js
+npm run dist
 ```
 
 ### Dev Tools
