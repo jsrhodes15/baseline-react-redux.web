@@ -12,7 +12,6 @@ export const LOGOUT = 'LOGOUT';
  */
 export function login(email, password) {
   return dispatch => {
-
     dispatch({type: LOGIN_REQUEST});
 
     return userService.login(email, password)
