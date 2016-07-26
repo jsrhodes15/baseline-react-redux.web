@@ -5,6 +5,7 @@ var path = require('path');
 var autoprefixer = require('autoprefixer');
 var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var OpenBrowserPlugin = require('open-browser-webpack-plugin');
 
 var srcPath = path.resolve(__dirname, '../src');
@@ -14,7 +15,6 @@ module.exports = {
   devtool: 'inline-source-map',
 
   entry: [
-    path.join(srcPath, '/assets/styles/main.scss'),
     path.join(srcPath, 'app')
   ],
 
@@ -101,7 +101,7 @@ module.exports = {
 
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': '"dev"',
-      'window.APP_ENV': require('./app.dev')
+      'window.APP_ENV': JSON.stringify(require('./app.dev'))
     })
   ]
 };
