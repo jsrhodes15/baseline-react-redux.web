@@ -8,12 +8,20 @@ This repo is intended to be used as a guideline for Redux apps presenting with R
 Our API is located here - [baseline-sails.api](https://github.com/johnrhampton/baseline-sails.api)
 
 ## Features
+- Hot Module Replacement - JS and CSS
+- Webpack and Babel
+- Simple Authentication using JWT
+- [redux](https://github.com/reactjs/redux)
+- [redux-devtools](https://github.com/gaearon/redux-devtools)
 - [react-router-redux](https://github.com/reactjs/react-router-redux)
+- [react-router](https://github.com/reactjs/react-router)
+- [js-snackbar](https://github.com/johnrhampton/SnackBar)
+- [Material Design Lite](https://getmdl.io/)
 
 ## Demo
 The app is deployed to [Firebase](https://firebase.google.com/) via Codeship
 
-app.url.here
+#### coming soon
 
 ### Prerequisites
 
