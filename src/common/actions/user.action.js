@@ -1,5 +1,6 @@
 import {push} from 'react-router-redux';
 import * as userService from '../services/user.service';
+import * as storageService from '../services/storage.service';
 import {KEYS} from '../constants/localStorage';
 
 export const LOGIN_REQUEST = 'LOGIN_REQUEST';
@@ -56,7 +57,7 @@ export function logout() {
  */
 export function saveProfile(profile) {
   return dispatch => {
-    storage.save({key: KEYS.USER_PROFILE, rawData: profile});
+    storageService.save(KEYS.USER_PROFILE, profile);
     dispatch({type: KEYS.USER_PROFILE});
   }
 }
@@ -85,22 +86,17 @@ export function updateLoginField(key, value) {
 export function validateProfile() {
   return (dispatch, getState) => {
 
-    return storage.load({key: KEYS.USER_PROFILE, autoSync: false})
+    return storageService.load(KEYS.USER_PROFILE)
       .then(profile => {
         let default_route = '/dashboard';
         if (profile && profile.status === 'authenticated') {
           // get next routing state - default to /dashboard if next route is not available
-          var routing_location = getState().routing.locationBeforeTransitions || {};
-          var next_route = routing_location.state && routing_location.state.nextPathname || default_route;
+          let routing_location = getState().routing.locationBeforeTransitions || {};
+          let next_route = routing_location.state ? routing_location.state.nextPathname : default_route;
 
           dispatch(loginComplete({profile: profile}));
           dispatch(push(next_route));
         }
-      })
-      .catch(error => {
-        console.warn(error);
-        // handle missing profile
-        dispatch(saveProfile({}));
       });
   }
 }
