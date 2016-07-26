@@ -42,8 +42,9 @@ function loginRequest(state, action) {
 }
 
 function logout(state, action) {
-  return Object.assign({}, {
+  return Object.assign({}, state, {
     type: LOGOUT,
-    login_profile: state.login_profile
+    profile: null,
+    error: null
   });
 }
