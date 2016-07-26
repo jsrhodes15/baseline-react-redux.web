@@ -1,5 +1,5 @@
 import React from 'react';
-import {APP_ENV} from '../../common/constants/environment';
+import {APP_ENV} from '../../../common/constants/environment';
 import Loading from './Loading';
 
 export default ({loading, email, password, handleFieldChange, handleLogin}) => (

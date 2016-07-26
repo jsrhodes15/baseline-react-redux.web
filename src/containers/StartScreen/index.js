@@ -6,7 +6,7 @@ import {showSnack} from '../../common/actions/notify.action';
 import {BG_IMAGES} from '../../common/constants/backgrounds';
 import {WARN} from '../../common/constants/snackbar';
 
-import Login from '../../components/Login/Login';
+import Login from './Login';
 
 class StartScreen extends Component {
   constructor(props) {
