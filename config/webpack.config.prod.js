@@ -112,7 +112,7 @@ module.exports = {
 
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': '"prod"',
-      'window.APP_ENV': require('./app.prod')
+      'window.APP_ENV': JSON.stringify(require('./app.prod'))
     }),
 
     new webpack.optimize.OccurrenceOrderPlugin(),
