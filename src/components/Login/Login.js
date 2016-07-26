@@ -1,4 +1,4 @@
-import React, {PropTypes} from 'react';
+import React from 'react';
 import {ENVIRONMENT} from '../../common/constants/environment';
 import Loading from './Loading';
 

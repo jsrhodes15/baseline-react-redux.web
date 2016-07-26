@@ -6,14 +6,14 @@ import {logout} from '../../common/actions/user.action';
 class Dashboard extends Component {
   constructor(props) {
     super(props);
-    this._logout = this._logout.bind(this);
+    this.handleLogout = this.handleLogout.bind(this);
   }
 
   componentDidMount() {
     componentHandler.upgradeDom();
   }
 
-  _logout() {
+  handleLogout() {
     this.props.dispatch(logout());
   }
   
@@ -58,7 +58,7 @@ class Dashboard extends Component {
                     <span className="visuallyhidden">Accounts</span>
                   </button>
                   <ul className="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" htmlFor="accbtn">
-                    <li className="mdl-menu__item" onClick={this._logout}>
+                    <li className="mdl-menu__item" onClick={this.handleLogout}>
                       <i className="sidebar-user-menu material-icons">exit_to_app</i>Log Out
                     </li>
                   </ul>

@@ -19,23 +19,23 @@ export default class App extends Component {
     document.title = 'My App';
 
     super(props);
-    this._handleStoreChange = this._handleStoreChange.bind(this);
-    this._verifyAuth = this._verifyAuth.bind(this);
+    this.handleStoreChange = this.handleStoreChange.bind(this);
+    this.handleVerifyAuth = this.handleVerifyAuth.bind(this);
   }
 
   componentDidMount() {
-    this.unsubscribe = this.props.store.subscribe(this._handleStoreChange);
+    this.unsubscribe = this.props.store.subscribe(this.handleStoreChange);
   }
 
   componentWillUnmount() {
     this.unsubscribe();
   }
 
-  _handleStoreChange() {
+  handleStoreChange() {
     // behavior on store change would happen here
   }
 
-  _verifyAuth(nextState, replace) {
+  handleVerifyAuth(nextState, replace) {
     var user = this.props.store.getState().user;
     if (!user.profile || user.profile.status !== 'authenticated') {
       replace({
@@ -54,7 +54,7 @@ export default class App extends Component {
     return (
       <Router history={enhanced_history}>
         <Route name="root" path="/" component={StartScreen}/>
-        <Route name="dashboard" path="dashboard" component={Dashboard} onEnter={this._verifyAuth}/>
+        <Route name="dashboard" path="dashboard" component={Dashboard} onEnter={this.handleVerifyAuth}/>
       </Router>
     );
   }
