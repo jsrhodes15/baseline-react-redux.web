@@ -5,9 +5,6 @@
 /build
 /dist
 
-# Custom
-/src/common/constants/environment.js
-
 # Dependency directories
 node_modules
 jspm_packages
