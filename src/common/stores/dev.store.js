@@ -3,7 +3,6 @@ import {persistState} from 'redux-devtools';
 import createLogger from 'redux-logger';
 
 export default (initialState, rootReducer, middlewares) => {
-
   /**
    * apply any development specific middleware
    */
@@ -38,19 +37,19 @@ export default (initialState, rootReducer, middlewares) => {
  * You can write custom logic here!
  * By default we try to read the key from ?debug_session=<key> in the address bar
  */
-const getDebugSessionKey = () => {
+function getDebugSessionKey() {
   const matches = window.location.href.match(/[?&]debug_session=([^&]+)\b/);
   return (matches && matches.length > 0) ? matches[1] : null;
-};
+}
 
 /**
  * hot swap root reducer
  */
-const handleHotModule = (store) => {
+function handleHotModule(store) {
   if (module.hot) {
     module.hot.accept('../reducers', () => {
       const nextRootReducer = require('../reducers').default;
       store.replaceReducer(nextRootReducer);
     });
   }
-};
+}
