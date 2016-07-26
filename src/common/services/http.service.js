@@ -1,4 +1,5 @@
 require('isomorphic-fetch');
+import storageService from '../services/storage.service';
 import {KEYS} from '../constants/localStorage';
 
 export function get(url) {
@@ -27,15 +28,17 @@ export function put(url, payload) {
 export function send(url, options) {
   return new Promise(
     (resolve, reject) => {
-      options.headers = options.headers || {};
+      // ensure options and options.headers are objects
+      let fetch_options = options || {};
+      fetch_options.headers = fetch_options.headers || {};
 
-      var profile = localStorage[KEYS.USER_PROFILE];
-      if (profile) {
-        profile = JSON.parse(profile);
-        options.headers['authorization'] = 'Bearer ' + profile.access_token;
-      }
-
-      return fetch(url, options)
+      return storageService.load(KEYS.USER_PROFILE)
+        .then(profile => {
+          return profile && addProfileHeaders(fetch_options, profile);
+        })
+        .then(() => {
+          return fetch(url, fetch_options);
+        })
         .then(checkStatus)
         .then(response => {
           return response.json();
@@ -73,4 +76,11 @@ function checkStatus(response) {
         throw error;
       });
   }
+}
+
+/**
+ * add any headers associated with the user's profile
+ */
+function addProfileHeaders(fetch_options, profile) {
+  fetch_options.headers['authorization'] = 'Bearer ' + profile.access_token
 }
