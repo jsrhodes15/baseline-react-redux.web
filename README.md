@@ -9,7 +9,7 @@ Our API is located here - [baseline-sails.api](https://github.com/johnrhampton/b
 
 ## Features
 - Hot Module Replacement - JS and CSS
-- Webpack and Babel
+- ES6 modules bundled with Webpack and Babel (following [create-react-app](https://github.com/facebookincubator/create-react-app) patterns)
 - Simple Authentication using JWT
 - [redux](https://github.com/reactjs/redux)
 - [redux-devtools](https://github.com/gaearon/redux-devtools)
