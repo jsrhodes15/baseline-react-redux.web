@@ -13,6 +13,9 @@ class StartScreen extends Component {
     super(props);
     this._handleFieldChange = this._handleFieldChange.bind(this);
     this._handleLogin = this._handleLogin.bind(this);
+    this._setStateField = this._setStateField.bind(this);
+
+    // manage state for login fields
     this.state = {email: '', password: ''};
   }
 
@@ -22,6 +25,8 @@ class StartScreen extends Component {
   }
 
   componentWillMount() {
+    // set state from redux
+    this._setStateField('email', this.props.user.login_profile.email);
     this.props.dispatch(validateProfile());
   }
 
@@ -35,9 +40,7 @@ class StartScreen extends Component {
   }
 
   _handleFieldChange(field, event) {
-    let new_state = Object.assign({}, this.state);
-    new_state[field] = event.target.value;
-    this.setState(new_state);
+    this._setStateField(field, event.target.value);
   }
 
   /**
@@ -52,6 +55,12 @@ class StartScreen extends Component {
     let login_container = document.getElementById('login-container');
     login_container.style.background = 'url(' + getRandomBGPhoto() + ') top center no-repeat';
     login_container.style.backgroundSize = 'cover';
+  }
+
+  _setStateField(field, value) {
+    let new_state = Object.assign({}, this.state);
+    new_state[field] = value;
+    this.setState(new_state);
   }
 
   render() {
