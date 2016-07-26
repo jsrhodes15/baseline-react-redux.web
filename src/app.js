@@ -5,12 +5,11 @@ import {Provider} from 'react-redux';
 import App from './containers/App';
 import createStore from './common/stores/main.store';
 
-/**
- * vendor
- */
+// stylesheets
+import './assets/styles/main.scss';
 import '../node_modules/js-snackbar/dist/snackbar.css';
 
-// Images and icons
+// images
 require.context('./assets/images', true, /.*/);
 
 /**
