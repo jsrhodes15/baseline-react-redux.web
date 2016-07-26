@@ -13,6 +13,7 @@ class StartScreen extends Component {
     super(props);
     this._handleFieldChange = this._handleFieldChange.bind(this);
     this._handleLogin = this._handleLogin.bind(this);
+    this.state = {email: '', password: ''};
   }
 
   componentDidMount() {
@@ -25,17 +26,18 @@ class StartScreen extends Component {
   }
 
   _handleLogin() {
-    var login_profile = this.props.user.login_profile;
-    if (!login_profile.email || !login_profile.password) {
+    if (!this.state.email || !this.state.password) {
       this.props.dispatch(showSnack({message: 'Email and Password are required!', type: WARN}));
       return;
     }
 
-    this.props.dispatch(login(login_profile.email, login_profile.password));
+    this.props.dispatch(login(this.state.email, this.state.password));
   }
 
   _handleFieldChange(field, event) {
-    this.props.dispatch(updateLoginField(field, event.target.value));
+    let new_state = Object.assign({}, this.state);
+    new_state[field] = event.target.value;
+    this.setState(new_state);
   }
 
   /**
@@ -57,8 +59,8 @@ class StartScreen extends Component {
 
     return (
       <Login loading={user.loading}
-             email={user.login_profile.email}
-             password={user.login_profile.password}
+             email={this.state.email}
+             password={this.state.password}
              handleFieldChange={this._handleFieldChange}
              handleLogin={this._handleLogin}/>
     );
