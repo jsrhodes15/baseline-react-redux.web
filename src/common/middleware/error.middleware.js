@@ -3,6 +3,13 @@ import {showSnack} from '../actions/notify.action';
 import {ERROR} from '../constants/snackbar';
 
 /**
+ * is this a 403 error
+ */
+const isForbidden = (error = {}) => {
+  return error.response && error.response.status === 403;
+};
+
+/**
  * handle any requests that responded with 403
  */
 export const handleForbidden = store => next => action => {
@@ -11,13 +18,6 @@ export const handleForbidden = store => next => action => {
     store.dispatch(showSnack({message: 'Your token has expired, please log in', type: ERROR}));
   }
   return next(action);
-};
-
-/**
- * is this a 403 error
- */
-const isForbidden = (error = {}) => {
-  return error.response && error.response.status === 403;
 };
 
 /**
