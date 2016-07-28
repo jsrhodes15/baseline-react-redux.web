@@ -8,10 +8,9 @@
     "url": "https://github.com/johnrhampton/baseline-react-redux.web"
   },
   "scripts": {
-    "build": "npm3 start && webpack --config ./config/webpack.config.dev.js",
-    "dev": "npm3 start && webpack-dev-server --config ./config/webpack.config.dev.js --content-base build/ --inline --hot",
-    "dist": "npm3 start && webpack --config ./config/webpack.config.prod.js",
-    "start": "npm3 install"
+    "build-dev": "npm3 install && webpack --config ./config/webpack.config.dev.js",
+    "build-prod": "npm3 install && webpack --config ./config/webpack.config.prod.js",
+    "start": "npm3 install && webpack-dev-server --config ./config/webpack.config.dev.js --content-base build/ --inline --hot"
   },
   "author": "JRH",
   "license": "ISC",
@@ -20,7 +19,7 @@
     "babel-runtime": "^6.9.2",
     "classnames": "^2.2.3",
     "isomorphic-fetch": "^2.2.1",
-    "js-snackbar": "^0.2.0",
+    "js-snackbar": "^0.2.1",
     "material-design-lite": "^1.1.3",
     "react": "^15.1.0",
     "react-dom": "^15.1.0",
