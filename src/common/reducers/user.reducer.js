@@ -27,8 +27,8 @@ function loginComplete(state, action) {
   return Object.assign({}, state, {
     type: LOGIN_COMPLETE,
     error: action.error,
-    profile: action.profile,
-    login_profile: {email: action.profile.email},
+    profile: action.error ? null : action.profile,
+    login_profile: action.error ? null : {email: action.profile.email},
     loading: false
   });
 }
