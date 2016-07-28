@@ -38,7 +38,7 @@ export function showSnack(payload) {
       backgroundColor: options.background,
       duration: options.duration,
       actionTextColor: '#FFFFFF',
-      showAction: options.showAction
+      actionType: options.actionType
     });
 
     dispatch(dispatch_payload);
