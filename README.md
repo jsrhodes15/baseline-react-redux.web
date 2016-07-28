@@ -40,12 +40,12 @@ npm install -g npm3
 ### Usage
 Install local dependencies, bundle the app via webpack, and fire up the webpack-dev-server @ `http://localhost:8080`
 ```
-npm run dev
+npm start
 ```
 
 Build dev output in the `build` directory
 ```
-npm run build
+npm run build-dev
 ```
 
 ### Testing ** NOT IMPLEMENTED YET
@@ -58,7 +58,7 @@ npm test
 Continuous Deployment is handled per branch via Codeship.  Output is built in the `dist` directory.
 
 ```
-npm run dist
+npm run build-prod
 ```
 
 ### Dev Tools
