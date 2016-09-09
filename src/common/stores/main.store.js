@@ -29,7 +29,7 @@ export default (initialState) => {
   const routingMiddleware = routerMiddleware(hashHistory);
 
   /**
-   * baseline middleware
+   * baseline middleware for all environments
    */
   const baseline_middlewares = [thunkMiddleware, routingMiddleware, notifyError, handleForbidden];
 
