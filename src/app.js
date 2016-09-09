@@ -7,7 +7,7 @@ import createStore from './common/stores/main.store';
 
 // stylesheets
 import './assets/styles/main.scss';
-import '../node_modules/js-snackbar/dist/snackbar.css';
+import 'js-snackbar/dist/snackbar.css';
 
 // images
 require.context('./assets/images', true, /.*/);
