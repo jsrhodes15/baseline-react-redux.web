@@ -1,6 +1,6 @@
 {
   "name": "baseline-react-redux.web",
-  "version": "0.1.8",
+  "version": "0.1.9-develop",
   "description": "Baseline web application built with React and Redux",
   "main": "app.js",
   "repository": {
