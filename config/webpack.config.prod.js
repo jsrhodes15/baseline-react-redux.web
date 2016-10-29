@@ -1,14 +1,14 @@
 /**
  * webpack concepts are following facebook's create-react-app
  */
-var path = require('path');
-var autoprefixer = require('autoprefixer');
-var webpack = require('webpack');
-var HtmlWebpackPlugin = require('html-webpack-plugin');
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
+const path = require('path');
+const autoprefixer = require('autoprefixer');
+const webpack = require('webpack');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
-var srcPath = path.resolve(__dirname, '../src');
-var nodeModulesPath = path.join(__dirname, '..', 'node_modules');
+const srcPath = path.resolve(__dirname, '../src');
+const nodeModulesPath = path.join(__dirname, '..', 'node_modules');
 
 module.exports = {
   bail: true,
@@ -16,7 +16,7 @@ module.exports = {
   devtool: 'eval',
 
   entry: {
-    app: path.join(srcPath, 'app')
+    app: path.join(srcPath, 'app'),
   },
 
   output: {
@@ -31,7 +31,7 @@ module.exports = {
 
   resolveLoader: {
     root: nodeModulesPath,
-    moduleTemplates: ['*-loader']
+    moduleTemplates: ['*-loader'],
   },
 
   module: {
@@ -39,8 +39,8 @@ module.exports = {
       {
         test: /\.js$/,
         loader: 'eslint',
-        include: srcPath
-      }
+        include: srcPath,
+      },
     ],
 
     loaders: [
@@ -48,7 +48,7 @@ module.exports = {
         test: /\.js$/,
         include: srcPath,
         loader: 'babel',
-        query: require('./babel.prod')
+        query: require('./babel.prod'),
       },
 
       {
@@ -76,18 +76,18 @@ module.exports = {
 
       {
         test: /\.(mp4|webm)$/,
-        loader: 'url?limit=10000'
-      }
-    ]
+        loader: 'url?limit=10000',
+      },
+    ],
   },
   eslint: {
     // TODO: consider separate config for production,
     // e.g. to enable no-console and no-debugger only in prod.
     configFile: path.join(__dirname, 'eslint.js'),
-    useEslintrc: false
+    useEslintrc: false,
   },
 
-  postcss: function() {
+  postcss: function postcss() {
     return [autoprefixer];
   },
 
@@ -107,7 +107,7 @@ module.exports = {
         minifyJS: true,
         minifyCSS: true,
         minifyURLs: true
-      }
+      },
     }),
 
     new webpack.DefinePlugin({
@@ -130,9 +130,9 @@ module.exports = {
       output: {
         comments: false,
         screw_ie8: true
-      }
+      },
     }),
 
-    new ExtractTextPlugin('[name].[contenthash].css')
-  ]
+    new ExtractTextPlugin('[name].[contenthash].css'),
+  ],
 };
