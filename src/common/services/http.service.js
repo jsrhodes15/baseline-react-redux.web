@@ -1,6 +1,6 @@
 require('isomorphic-fetch');
 import * as storageService from '../services/storage.service';
-import {KEYS} from '../constants/localStorage';
+import { KEYS } from '../../constants/localStorage';
 
 export function get(url) {
   var options = {

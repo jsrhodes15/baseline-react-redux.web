@@ -1,7 +1,10 @@
-import {push} from 'react-router-redux';
-import * as userService from '../services/user.service';
-import * as storageService from '../services/storage.service';
-import {KEYS} from '../constants/localStorage';
+import { push } from 'react-router-redux';
+
+import * as httpService from '../../common/services/http.service';
+import * as storageService from '../../common/services/storage.service';
+import { APP_ENV } from '../../constants/environment'
+import { USER } from '../../constants/endpoints';
+import { KEYS } from '../../constants/localStorage';
 
 export const LOGIN_REQUEST = 'LOGIN_REQUEST';
 export const LOGIN_COMPLETE = 'LOGIN_COMPLETE';
@@ -12,16 +15,18 @@ export const LOGOUT = 'LOGOUT';
  */
 export function login(email, password) {
   return dispatch => {
-    dispatch({type: LOGIN_REQUEST});
+    dispatch({ type: LOGIN_REQUEST });
 
-    return userService.login(email, password)
+    let url = APP_ENV.API_PATH + USER.LOGIN;
+
+    return httpService.post(url, { email, password })
       .then(profile => {
         dispatch(saveProfile(profile));
-        dispatch(loginComplete({profile: profile}));
+        dispatch(loginComplete({ profile: profile }));
         dispatch(push('/dashboard'));
       })
       .catch(error => {
-        dispatch(loginComplete({error: error}));
+        dispatch(loginComplete({ error }));
       });
   }
 }
@@ -44,7 +49,7 @@ export function logout() {
   return dispatch => {
     let logout_profile = {};
 
-    dispatch({type: LOGOUT});
+    dispatch({ type: LOGOUT });
     dispatch(saveProfile(logout_profile));
     dispatch(push('/'));
   }
@@ -56,7 +61,7 @@ export function logout() {
 export function saveProfile(profile) {
   return dispatch => {
     storageService.save(KEYS.USER_PROFILE, profile);
-    dispatch({type: KEYS.USER_PROFILE});
+    dispatch({ type: KEYS.USER_PROFILE });
   }
 }
 
@@ -75,7 +80,7 @@ export function validateProfile() {
           let routing_location = getState().routing.locationBeforeTransitions || {};
           let next_route = routing_location.state ? routing_location.state.nextPathname : default_route;
 
-          dispatch(loginComplete({profile: profile}));
+          dispatch(loginComplete({ profile: profile }));
           dispatch(push(next_route));
         }
       });

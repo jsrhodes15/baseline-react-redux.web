@@ -1,18 +1,18 @@
-import {createStore, applyMiddleware, compose} from 'redux';
-import {hashHistory} from 'react-router';
+import { createStore, applyMiddleware, compose } from 'redux';
+import { hashHistory } from 'react-router';
 
-import {APP_ENV} from '../constants/environment';
+import { APP_ENV } from '../../constants/environment';
 
 /**
  * third party middleware
  */
-import {routerMiddleware} from 'react-router-redux'
+import { routerMiddleware } from 'react-router-redux'
 import thunkMiddleware from 'redux-thunk';
 
 /**
  * local middleware
  */
-import {handleForbidden, notifyError} from '../middleware/error.middleware';
+import { handleForbidden, notifyError } from '../middleware/error.middleware';
 
 /**
  * import root reducer

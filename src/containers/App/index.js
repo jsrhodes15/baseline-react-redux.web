@@ -7,9 +7,9 @@
  *    verifying authentication when navigating to routes, etc..
  *
  */
-import React, {Component} from 'react';
-import {Router, Route, hashHistory} from 'react-router';
-import {syncHistoryWithStore} from 'react-router-redux';
+import React, { Component } from 'react';
+import { Router, Route, hashHistory } from 'react-router';
+import { syncHistoryWithStore } from 'react-router-redux';
 
 import Dashboard from '../Dashboard';
 import StartScreen from '../StartScreen';
@@ -36,11 +36,11 @@ export default class App extends Component {
   }
 
   handleVerifyAuth(nextState, replace) {
-    var user = this.props.store.getState().user;
+    var user = this.props.store.getState().userState;
     if (!user.profile || user.profile.status !== 'authenticated') {
       replace({
         pathname: '/',
-        state: {nextPathname: nextState.location.pathname}
+        state: { nextPathname: nextState.location.pathname }
       });
     }
   }
@@ -53,8 +53,8 @@ export default class App extends Component {
 
     return (
       <Router history={enhanced_history}>
-        <Route name="root" path="/" component={StartScreen}/>
-        <Route name="dashboard" path="dashboard" component={Dashboard} onEnter={this.handleVerifyAuth}/>
+        <Route name="root" path="/" component={StartScreen} />
+        <Route name="dashboard" path="dashboard" component={Dashboard} onEnter={this.handleVerifyAuth} />
       </Router>
     );
   }

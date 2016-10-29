@@ -28,7 +28,7 @@ function loginComplete(state, action) {
     type: LOGIN_COMPLETE,
     error: action.error,
     profile: action.error ? null : action.profile,
-    login_profile: action.error ? null : {email: action.profile.email},
+    login_profile: action.error ? null : { email: action.profile.email },
     loading: false
   });
 }

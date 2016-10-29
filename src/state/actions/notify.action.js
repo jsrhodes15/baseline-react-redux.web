@@ -1,5 +1,5 @@
-import {show} from 'js-snackbar';
-import {INFO} from '../constants/snackbar';
+import { show } from 'js-snackbar';
+import { INFO } from '../../constants/snackbar';
 
 export const CLEAR_SNACK_MESSAGE = 'CLEAR_SNACK_MESSAGE';
 export const SHOW_SNACK = 'SHOW_SNACK';

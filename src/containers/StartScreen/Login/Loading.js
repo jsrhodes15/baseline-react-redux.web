@@ -1,10 +1,8 @@
 import React from 'react';
 import classNames from 'classnames';
 
-export default ({loading}) => {
-  let loadingClass = classNames('dissolve-animation', {
-    'hide': !loading
-  });
+export default ({ loading }) => {
+  let loadingClass = classNames('dissolve-animation', { 'hide': !loading });
 
   return (
     <div className={loadingClass}>

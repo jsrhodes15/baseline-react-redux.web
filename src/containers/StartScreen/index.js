@@ -1,10 +1,10 @@
-import React, {Component} from 'react';
-import {connect} from 'react-redux';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
-import {login, validateProfile} from '../../common/actions/user.action';
-import {showSnack} from '../../common/actions/notify.action';
-import {BG_IMAGES} from '../../common/constants/backgrounds';
-import {WARN} from '../../common/constants/snackbar';
+import { login, validateProfile } from '../../state/actions/user.action';
+import { showSnack } from '../../state/actions/notify.action';
+import { BG_IMAGES } from '../../constants/backgrounds';
+import { WARN } from '../../constants/snackbar';
 
 import Login from './Login';
 
@@ -16,7 +16,7 @@ class StartScreen extends Component {
     this._setStateField = this._setStateField.bind(this);
 
     // manage state for login fields
-    this.state = {email: '', password: ''};
+    this.state = { email: '', password: '' };
   }
 
   componentDidMount() {
@@ -26,13 +26,13 @@ class StartScreen extends Component {
 
   componentWillMount() {
     // set state from redux
-    this._setStateField('email', this.props.user.login_profile.email);
+    this._setStateField('email', this.props.login_profile.email);
     this.props.dispatch(validateProfile());
   }
 
   _handleLogin() {
     if (!this.state.email || !this.state.password) {
-      this.props.dispatch(showSnack({message: 'Email and Password are required!', type: WARN}));
+      this.props.dispatch(showSnack({ message: 'Email and Password are required!', type: WARN }));
       return;
     }
 
@@ -64,23 +64,21 @@ class StartScreen extends Component {
   }
 
   render() {
-    let {user} = this.props;
+    let {loading} = this.props;
 
     return (
-      <Login loading={user.loading}
-             email={this.state.email}
-             password={this.state.password}
-             handleFieldChange={this._handleFieldChange}
-             handleLogin={this._handleLogin}/>
+      <Login loading={loading}
+        email={this.state.email}
+        password={this.state.password}
+        handleFieldChange={this._handleFieldChange}
+        handleLogin={this._handleLogin} />
     );
   }
 }
 
 function mapStateToProps(state) {
-  const {user} = state;
-  return {
-    user
-  };
+  const {userState} = state;
+  return { loading: userState.loading, login_profile: userState.login_profile };
 }
 
 export default connect(mapStateToProps)(StartScreen);

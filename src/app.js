@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {Provider} from 'react-redux';
+import { Provider } from 'react-redux';
 
 import App from './containers/App';
-import createStore from './common/stores/main.store';
+import createStore from './state/stores/main.store';
 
 // stylesheets
 import './assets/styles/main.scss';
@@ -20,7 +20,7 @@ const store = createStore();
 if (document.getElementById('app-root')) {
   ReactDOM.render(
     <Provider store={store}>
-      <App store={store}/>
+      <App store={store} />
     </Provider>,
     document.getElementById('app-root')
   );
