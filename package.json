@@ -8,8 +8,8 @@
     "url": "https://github.com/johnrhampton/baseline-react-redux.web"
   },
   "scripts": {
-    "build:dev": "npm install && webpack --config ./config/webpack.config.dev.js",
-    "build:prod": "npm install && webpack --config ./config/webpack.config.prod.js",
+    "build:dev": "rimraf ./dist && webpack --config ./config/webpack.config.dev.js",
+    "build:prod": "rimraf ./dist && webpack --config ./config/webpack.config.prod.js",
     "start": "webpack-dev-server --config ./config/webpack.config.dev.js --content-base build/ --inline --hot"
   },
   "author": "JRH",
