@@ -26,26 +26,23 @@ The app is deployed to [Firebase](https://firebase.google.com/) via Codeship
 ### Prerequisites
 
 #### NVM
-- [Node Version Manager](https://github.com/creationix/nvm) and Node 4.4.7
+- [Node Version Manager](https://github.com/creationix/nvm) and Node 6.9.1
 ```
-nvm install 4.4.7
-nvm alias default 4.4.7
-```
-
-#### Global Dependencies
-```
-npm install -g npm3
+nvm install 6.9.1
+nvm alias default 6.9.1
 ```
 
 ### Usage
 Install local dependencies, bundle the app via webpack, and fire up the webpack-dev-server @ `http://localhost:8080`
 ```
+npm install
+
 npm start
 ```
 
 Build dev output in the `build` directory
 ```
-npm run build-dev
+npm run build:dev
 ```
 
 ### Testing ** NOT IMPLEMENTED YET
@@ -58,7 +55,7 @@ npm test
 Continuous Deployment is handled per branch via Codeship.  Output is built in the `dist` directory.
 
 ```
-npm run build-prod
+npm run build:prod
 ```
 
 ### Dev Tools
